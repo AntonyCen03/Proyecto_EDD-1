@@ -6,7 +6,7 @@ package proyecto_edd.pkg1;
 
 /**
  *
- * @author 58412
+ * @author Antony
  */
 public class Proyecto_EDD1 {
 
