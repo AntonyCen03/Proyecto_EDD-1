@@ -16,7 +16,7 @@ public class Proyecto_EDD1 {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("HELLO WORD");
-        System.out.println("HOLA MUNDO");
+        System.out.println("12313212121");
         
     }
     
