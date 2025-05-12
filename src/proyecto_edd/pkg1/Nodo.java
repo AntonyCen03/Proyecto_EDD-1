@@ -9,5 +9,12 @@ package proyecto_edd.pkg1;
  * @author Antony Cen
  */
 public class Nodo {
+    private Nodo pNext;
+
+    public Nodo(Nodo pNext) {
+        this.pNext = pNext;
+    }
+    
+    
     
 }
