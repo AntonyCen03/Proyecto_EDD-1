@@ -9,8 +9,8 @@ package proyecto_edd.pkg1;
  * @author Antony Cen
  */
 public class Nodo {
-    private Nodo pNext;
-    private Nodo pPrev;
+    public Nodo pNext;
+    public Nodo pPrev;
     private String dato;
 
     public Nodo(Nodo pNext, String dato) {

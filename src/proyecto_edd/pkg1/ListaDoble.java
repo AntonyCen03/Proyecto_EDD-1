@@ -9,8 +9,8 @@ package proyecto_edd.pkg1;
  * @author anton
  */
 public class ListaDoble {
-    private Nodo pFirst;
-    private Nodo pLast;
+    public Nodo pFirst;
+    public Nodo pLast;
 
     public ListaDoble(Nodo pFirst, Nodo pLast) {
         this.pFirst = pFirst;
