@@ -6,17 +6,17 @@ package proyecto_edd.pkg1;
 
 /**
  *
- * @author Antony Cen
+ * @author anton
  */
-public class Nodo {
-    private Nodo pNext;
-    private Nodo pPrev;
-    private String dato;
+public class ListaDoble {
+    private Nodo pFirst;
+    private Nodo pLast;
 
-    public Nodo(Nodo pNext, String dato) {
-        this.pNext = null;
-        this.pPrev = null;
-        this.dato = dato;
+    public ListaDoble(Nodo pFirst, Nodo pLast) {
+        this.pFirst = pFirst;
+        this.pLast = pLast;
     }
+    
+    
     
 }

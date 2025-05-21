@@ -15,7 +15,10 @@ public class Proyecto_EDD1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hola como esta");
+        Interfaz ventana=new Interfaz();
+        ventana.show(true);
+        ventana.setLocationRelativeTo(null);
+        
         
     }
     
