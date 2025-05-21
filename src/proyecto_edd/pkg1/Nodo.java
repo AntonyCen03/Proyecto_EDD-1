@@ -19,4 +19,12 @@ public class Nodo {
         this.dato = dato;
     }
     
+    public String get(){
+        return this.dato;
+    }
+    
+    public void set(String letra){
+        this.dato=letra;
+    }
+    
 }
