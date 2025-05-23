@@ -5,34 +5,61 @@
 package proyecto_edd.pkg1;
 
 /**
- *
- * @author anton
+ * Clase Lista  
+ * @author Antony Cen y Sofia Romero
+ * @version 23/05/25
  */
 public class Lista {
     public Nodo pFirst;
     public Nodo pLast;
-
+    
+    /**
+     * 
+     * @param pFirst
+     * @param pLast 
+     */
     public Lista(Nodo pFirst, Nodo pLast) {
         this.pFirst = null;
         this.pLast = null;
     }
-    
+    /**
+     * Metodo EsVacia
+     * @return Esto retorna si la lista es vacia si pFirst es vacia.
+     */
     public boolean EsVacia(){
         return this.pFirst==null;
     }
     
+    /**
+     * Metodo Primero
+     * @return Esto retorna el primero de la lista
+     */
     public Nodo Primero(){
         return this.pFirst;
     }
     
+    /**
+     * Metodo Ultimo
+     * @return Esto retorna el Ultimo de la lista 
+     */
     public Nodo Ultimo(){
         return this.pLast;
     }
     
+    /**
+     * Metodo Leer
+     * @param pValor
+     * @return retorna los que leer a pValor
+     */
     public String Leer(Nodo pValor){
         return pValor.dato;
     }
     
+    /**
+     * Metodo Proximo
+     * @param pValor
+     * @return Esto retorna el pNext al pevalor
+     */
     public Nodo Proximo(Nodo pValor){
         if (pValor!=this.Ultimo()) {
             return pValor.pNext;
@@ -41,6 +68,10 @@ public class Lista {
         }
     }
     
+    /**
+     * Metodo Final
+     * @return retornar el final de la lista 
+     */
     public Nodo Final(){
         if (this.EsVacia()) {
             return null;
@@ -53,6 +84,10 @@ public class Lista {
         }
     }
     
+    /**
+     * Motodo Recorrer
+     * @return Retorna el valor que busca
+     */
     public String Recoorer(){
         Nodo pAux;
         String resultado="";

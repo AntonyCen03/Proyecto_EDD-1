@@ -5,8 +5,9 @@
 package proyecto_edd.pkg1;
 
 /**
- *
- * @author Antony
+ * Main
+ * @author Antony Cen y Sofia Romero
+ * @version 23/05/25
  */
 public class Proyecto_EDD1 {
 
