@@ -11,20 +11,12 @@ package proyecto_edd.pkg1;
 public class Nodo {
     public Nodo pNext;
     public Nodo pPrev;
-    private String dato;
+    public String dato;
 
     public Nodo(Nodo pNext, String dato) {
         this.pNext = null;
         this.pPrev = null;
         this.dato = dato;
-    }
-    
-    public String get(){
-        return this.dato;
-    }
-    
-    public void set(String letra){
-        this.dato=letra;
     }
     
 }
