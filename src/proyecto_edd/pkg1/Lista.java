@@ -58,7 +58,7 @@ public class Lista {
     /**
      * Metodo Proximo
      * @param pValor
-     * @return Esto retorna el pNext al pevalor
+     * @return Esto retorna el pNext al pValor
      */
     public Nodo Proximo(Nodo pValor){
         if (pValor!=this.Ultimo()) {
@@ -66,6 +66,18 @@ public class Lista {
         }else{
             return this.Ultimo();
         }
+    }
+    
+    /**
+     * Metodo Anterior
+     * @param pValor
+     * @return Esto retorna el pPrev al pValor
+     */
+    public Nodo Anterior(Nodo pValor){
+        if (pValor.pPrev!=this.Ultimo()) {
+            pValor=pValor.pPrev;   
+        }
+        return pValor;
     }
     
     /**
