@@ -4,6 +4,15 @@
  */
 package proyecto_edd.pkg1;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -80,11 +89,36 @@ public class Interfaz extends javax.swing.JFrame {
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int resultado = fileChooser.showOpenDialog(this);
         
-        if (resultado == JFileChooser.APPROVE_OPTION){
+        if(resultado == JFileChooser.APPROVE_OPTION){
             java.io.File archivoSeleccionado = fileChooser.getSelectedFile();
             
             if (archivoSeleccionado.getName().toLowerCase().endsWith(".txt")) {
-        JOptionPane.showMessageDialog(this, "Archivo TXT seleccionado: " + archivoSeleccionado.getAbsolutePath(), "Archivo Seleccionado", JOptionPane.INFORMATION_MESSAGE);
+               JOptionPane.showMessageDialog(this, "Archivo TXT seleccionado: " + archivoSeleccionado.getAbsolutePath(), "Archivo Seleccionado", JOptionPane.INFORMATION_MESSAGE);
+                
+            
+                
+                try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(archivoSeleccionado), StandardCharsets.UTF_8))
+                ) {
+                    StringBuilder content = new StringBuilder();
+                    String line;
+                    if ((line = reader.readLine()) != null) {
+                        content.append(line);
+                        while ((line = reader.readLine()) != null) {
+                            content.append("\n").append(line);
+                        }
+                    }
+                    System.out.println(content);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this,
+                        "Error al leer archivo: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+
+
+                
+            
             } else {
                 JOptionPane.showMessageDialog(this, "El archivo seleccionado no es un archivo .txt válido.", "Error de Selección", JOptionPane.WARNING_MESSAGE);
             }
