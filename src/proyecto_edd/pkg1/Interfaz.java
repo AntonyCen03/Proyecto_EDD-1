@@ -101,14 +101,39 @@ public class Interfaz extends javax.swing.JFrame {
                     new InputStreamReader(new FileInputStream(archivoSeleccionado), StandardCharsets.UTF_8))
                 ) {
                     StringBuilder content = new StringBuilder();
+                    StringBuilder grafo = new StringBuilder();
                     String line;
-                    if ((line = reader.readLine()) != null) {
-                        content.append(line);
-                        while ((line = reader.readLine()) != null) {
-                            content.append("\n").append(line);
-                        }
-                    }
-                    System.out.println(content);
+//                   if ((line = reader.readLine()) != null) {
+//                        boolean auxdic = false;
+//                        boolean auxtab = false;
+//                        
+//                        if (auxdic == true && (line = reader.readLine()) != ("/dic")){
+//                                content.append(line);
+//                                while ((line = reader.readLine()) != null) {
+//                                    content.append("\n").append(line);
+//                                }
+//                        }else if (auxtab == true && (line = reader.readLine()) != ("/tab")){
+//                                grafo.append(line);
+//                                while ((line = reader.readLine()) != null) {
+//                                    grafo.append("\n").append(line);
+//                                }
+//                        }else{
+//                            if((line = reader.readLine()) == ("dic")){
+//                                auxdic = true;
+//                     
+//                            }else if ((line = reader.readLine()) == ("tab")){
+//                                auxtab = true;
+//                                
+//                            }else if ((line = reader.readLine()) == ("/dic")){
+//                                auxdic = false;
+//                                
+//                            }else if ((line = reader.readLine()) == ("/tab")){
+//                                auxtab = false;
+//                            }
+//                        
+//                        }
+//                    }
+//                    System.out.println(content);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this,
                         "Error al leer archivo: " + ex.getMessage(),
