@@ -27,12 +27,15 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         DFS = new java.awt.Button();
         BFS = new java.awt.Button();
         label1 = new java.awt.Label();
         palabraEspecifica = new java.awt.Button();
         buscaPalabraEspecifico = new javax.swing.JTextField();
+
+        jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,6 +125,7 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     private java.awt.Button DFS;
     private javax.swing.JTextField buscaPalabraEspecifico;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
     private java.awt.Label label1;
     private java.awt.Button palabraEspecifica;
     // End of variables declaration//GEN-END:variables

@@ -99,41 +99,46 @@ public class Interfaz extends javax.swing.JFrame {
                 
                 try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(new FileInputStream(archivoSeleccionado), StandardCharsets.UTF_8))
-                ) {
-                    StringBuilder content = new StringBuilder();
-                    StringBuilder grafo = new StringBuilder();
+                ){
+                    String content = "";
+                    String letras = "";
                     String line;
-//                   if ((line = reader.readLine()) != null) {
-//                        boolean auxdic = false;
-//                        boolean auxtab = false;
-//                        
-//                        if (auxdic == true && (line = reader.readLine()) != ("/dic")){
-//                                content.append(line);
-//                                while ((line = reader.readLine()) != null) {
-//                                    content.append("\n").append(line);
-//                                }
-//                        }else if (auxtab == true && (line = reader.readLine()) != ("/tab")){
-//                                grafo.append(line);
-//                                while ((line = reader.readLine()) != null) {
-//                                    grafo.append("\n").append(line);
-//                                }
-//                        }else{
-//                            if((line = reader.readLine()) == ("dic")){
-//                                auxdic = true;
-//                     
-//                            }else if ((line = reader.readLine()) == ("tab")){
-//                                auxtab = true;
-//                                
-//                            }else if ((line = reader.readLine()) == ("/dic")){
-//                                auxdic = false;
-//                                
-//                            }else if ((line = reader.readLine()) == ("/tab")){
-//                                auxtab = false;
-//                            }
-//                        
-//                        }
-//                    }
-//                    System.out.println(content);
+                    boolean auxdic = false;
+                    boolean auxtab = false;
+
+
+                    while ((line = reader.readLine()) != null) {
+                        
+                        if (auxdic == true && !line.equals("/dic")){
+                            content += (line + ',');
+                        }else if (auxtab == true && !line.equals("/tab")){
+                            letras += line;
+                        }else{
+                            if (line.equals("dic")){
+                                auxdic = true;
+                            }
+                            else if (line.equals("tab")){
+                                auxtab = true;
+                            }
+                            else if (line.equals("/dic")){
+                                auxdic = false;
+                            }
+                            else if (line.equals("/tab")){
+                                auxtab = false;
+                            }
+                            else{
+                                System.out.println("no entro");
+                            }
+                            
+                        }
+                    }
+                    
+                    System.out.println(content);
+                    System.out.println(letras);
+                      
+                        
+                   
+                    
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this,
                         "Error al leer archivo: " + ex.getMessage(),
