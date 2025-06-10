@@ -9,10 +9,10 @@ package proyecto_edd.pkg1;
  * @author Antony Cen
  */
 public class Nodo {
-    private Nodo pNext;
-    private Object dato;
+    public Nodo pNext;
+    public int dato;
 
-    public Nodo(Nodo pNext, Object dato) {
+    public Nodo(int dato, Nodo pNext) {
         this.pNext = pNext;
         this.dato = dato;
     }

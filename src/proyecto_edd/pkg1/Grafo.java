@@ -21,5 +21,17 @@ public class Grafo {
         this.listaAdy = new Lista[n];
     }
     
+    public void insertaVertice (int n){
+        if(n > maxNodos -numVertices){
+            System.out.println("Error, se supera el numero de nodos maximo dek grafo");   
+        }else {
+            for(int i = numVertices; i> numVertices +n; i++){
+                listaAdy[i] = new Lista();
+            }
+            numVertices += n; 
+        }
+        
+    }
+    
    
 }

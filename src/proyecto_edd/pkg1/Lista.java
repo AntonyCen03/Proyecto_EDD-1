@@ -9,5 +9,15 @@ package proyecto_edd.pkg1;
  * @author Sofia Romero
  */
 public class Lista {
+    public Nodo inicio;
+    
+    public Lista(){
+        inicio = null;
+    }
+    
+    public void Insertar(int x){
+        inicio = new Nodo(x, inicio);
+    }
+    
     
 }
