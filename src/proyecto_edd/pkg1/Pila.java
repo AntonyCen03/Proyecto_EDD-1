@@ -5,13 +5,14 @@
 package proyecto_edd.pkg1;
 
 /**
- *
- * @author anton
+ * Clase Pila
+ * @author Antony Cen
+ * @version 12/06/2025
  */
 public class Pila {
     private NodoPila pIni;
     private int Size;
-
+    
     public Pila() {
         this.pIni = null;
         this.Size = 0;

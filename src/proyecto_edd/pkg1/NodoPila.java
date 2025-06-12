@@ -5,8 +5,9 @@
 package proyecto_edd.pkg1;
 
 /**
- *
+ * Clase NodoPila
  * @author Antony Cen
+ * @version 12/06/2025
  */
 public class NodoPila {
     private Object dato;
