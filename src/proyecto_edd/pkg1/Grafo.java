@@ -18,10 +18,10 @@ public class Grafo {
     }
     
     public void insertarArista (){
-        for (int fila = 0; fila< 16; fila++){
-            for(int cola = 0;  cola <16; cola++){
+        for (int fila = 0; fila< 4; fila++){
+            for(int cola = 0;  cola <4; cola++){
             
-                int actual = fila*16 + cola;
+                int actual = fila*4 + cola;
                 // System.out.println(actual);
                 for(int x = -1; x< 1 ; x++){
                     for(int y = -1; y< 1; y++){
@@ -31,11 +31,11 @@ public class Grafo {
                         int nx = fila +x;
                         int ny = cola + y;
                         
-                        if (nx >= 0 && nx< 16  && ny >= 0 && ny< 16){
-                            int adyacente = nx *16 +ny;
+                        if (nx >= 0 && nx< 4  && ny >= 0 && ny< 4){
+                            int adyacente = nx *4 +ny;
                             
                             aristas[actual][adyacente]= true;
-                            System.out.println(aristas[actual][adyacente]);
+                            //System.out.println(aristas[actual][adyacente]);
                         }
                         
                     }
