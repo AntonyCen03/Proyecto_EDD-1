@@ -15,7 +15,7 @@ public class Lista {
         inicio = null;
     }
     
-    public void Insertar(int x){
+    public void Insertar(String x){
         inicio = new Nodo(x, inicio);
     }
     

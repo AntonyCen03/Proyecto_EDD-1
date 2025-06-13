@@ -10,9 +10,9 @@ package proyecto_edd.pkg1;
  */
 public class Nodo {
     public Nodo pNext;
-    public int dato;
+    public String dato;
 
-    public Nodo(int dato, Nodo pNext) {
+    public Nodo(String dato, Nodo pNext) {
         this.pNext = pNext;
         this.dato = dato;
     }
