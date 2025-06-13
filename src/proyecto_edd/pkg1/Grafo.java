@@ -9,29 +9,48 @@ package proyecto_edd.pkg1;
  * @author Sofia Romero
  */
 public class Grafo {
-    private int numVertices;
-    boolean dirigido;
-    int maxNodos;
-    Lista[] listaAdy;
+    private int maxNodos;
+    private boolean[][] aristas;
     
-    public Grafo(int n, boolean d) {
-        this.dirigido = d;
-        this.maxNodos = n;
-        this.numVertices = 0;
-        this.listaAdy = new Lista[n];
+    public Grafo() {
+        this.maxNodos = 16;
+        this.aristas = new boolean[16][16];
     }
     
-    public void insertaVertice (int n){
-        if(n > maxNodos -numVertices){
-            System.out.println("Error, se supera el numero de nodos maximo dek grafo");   
-        }else {
-            for(int i = numVertices; i> numVertices +n; i++){
-                listaAdy[i] = new Lista();
+    public void insertarArista (){
+        for (int fila = 0; fila< 16; fila++){
+            for(int cola = 0;  cola <16; cola++){
+            
+                int actual = fila*16 + cola;
+                // System.out.println(actual);
+                for(int x = -1; x< 1 ; x++){
+                    for(int y = -1; y< 1; y++){
+                    
+                        if (x== 0 && y== 0) continue;
+                        
+                        int nx = fila +x;
+                        int ny = cola + y;
+                        
+                        if (nx >= 0 && nx< 16  && ny >= 0 && ny< 16){
+                            int adyacente = nx *16 +ny;
+                            
+                            aristas[actual][adyacente]= true;
+                            System.out.println(aristas[actual][adyacente]);
+                        }
+                        
+                    }
+                }
             }
-            numVertices += n; 
         }
         
     }
     
+    public boolean is_Adyacente(){
+           return false;
+    
+    }
+        
+    }
+    
    
-}
+

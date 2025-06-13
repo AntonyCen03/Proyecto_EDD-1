@@ -16,6 +16,10 @@ public class Proyecto_EDD1 {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        Grafo jj = new Grafo();
+        
+        jj.insertarArista();
+        
         Interfaz ventana1 = new Interfaz();
         ventana1.setVisible(true);
         
