@@ -132,10 +132,14 @@ public class Interfaz extends javax.swing.JFrame {
                             
                         }
                     }
+                    content = content.toUpperCase();
+                    letras = letras.toUpperCase();
                     
                     System.out.println(content);
                     System.out.println(letras);
-                      
+                    String nuevaContent = content.substring(0, content.length() - 1);
+                    System.out.println(nuevaContent);
+                    String[] listaPalabras = nuevaContent.split(",");
                         
                    
                     
