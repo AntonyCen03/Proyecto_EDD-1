@@ -23,6 +23,7 @@ public class Proyecto_EDD1 {
         Interfaz ventana1 = new Interfaz();
         ventana1.setVisible(true);
         
+        
         System.out.println("Hola como esta");
 
         
