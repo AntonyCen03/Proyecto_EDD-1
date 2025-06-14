@@ -4,10 +4,18 @@
  */
 package proyecto_edd.pkg1;
 
-/**
- *
- * @author Sofia Romero
- */
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 public class Interfaz extends javax.swing.JFrame {
 
     /**
@@ -26,21 +34,130 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        Titulo = new java.awt.Label();
+        CargarArchivo = new java.awt.Button();
+        Integrantes = new java.awt.Label();
+        SofiaRomero = new java.awt.Label();
+        AntonyCen1 = new java.awt.Label();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Titulo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setText("Sopa de letras");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, 30));
+        Titulo.getAccessibleContext().setAccessibleName("titulo");
+        Titulo.getAccessibleContext().setAccessibleDescription("");
+
+        CargarArchivo.setLabel("Cargar Archivo");
+        CargarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargarArchivoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+
+        Integrantes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        Integrantes.setForeground(new java.awt.Color(255, 255, 255));
+        Integrantes.setText("Integrantes:");
+        jPanel1.add(Integrantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 90, 30));
+
+        SofiaRomero.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        SofiaRomero.setForeground(new java.awt.Color(255, 255, 255));
+        SofiaRomero.setText("Sofia Romero");
+        jPanel1.add(SofiaRomero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, 90, 30));
+
+        AntonyCen1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        AntonyCen1.setForeground(new java.awt.Color(255, 255, 255));
+        AntonyCen1.setText("Antony Cen");
+        jPanel1.add(AntonyCen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 80, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoActionPerformed
+        
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int resultado = fileChooser.showOpenDialog(this);
+        
+        if(resultado == JFileChooser.APPROVE_OPTION){
+            java.io.File archivoSeleccionado = fileChooser.getSelectedFile();
+            
+            if (archivoSeleccionado.getName().toLowerCase().endsWith(".txt")) {
+               JOptionPane.showMessageDialog(this, "Archivo TXT seleccionado: " + archivoSeleccionado.getAbsolutePath(), "Archivo Seleccionado", JOptionPane.INFORMATION_MESSAGE);
+                
+            
+                
+                try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(archivoSeleccionado), StandardCharsets.UTF_8))
+                ){
+                    String content = "";
+                    String letras = "";
+                    String line;
+                    boolean auxdic = false;
+                    boolean auxtab = false;
+
+
+                    while ((line = reader.readLine()) != null) {
+                        
+                        if (auxdic == true && !line.equals("/dic")){
+                            content += (line + ',');
+                        }else if (auxtab == true && !line.equals("/tab")){
+                            letras += line;
+                        }else{
+                            if (line.equals("dic")){
+                                auxdic = true;
+                            }
+                            else if (line.equals("tab")){
+                                auxtab = true;
+                            }
+                            else if (line.equals("/dic")){
+                                auxdic = false;
+                            }
+                            else if (line.equals("/tab")){
+                                auxtab = false;
+                            }
+                            else{
+                                System.out.println("no entro");
+                            }
+                            
+                        }
+                    }
+                    
+                    System.out.println(content);
+                    System.out.println(letras);
+                      
+                        
+                   
+                    
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this,
+                        "Error al leer archivo: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+
+
+                
+            
+            } else {
+                JOptionPane.showMessageDialog(this, "El archivo seleccionado no es un archivo .txt válido.", "Error de Selección", JOptionPane.WARNING_MESSAGE);
+            }
+        } else if (resultado == JFileChooser.CANCEL_OPTION) {
+            JOptionPane.showMessageDialog(this, "Selección de archivo cancelada.", "Cancelado", JOptionPane.INFORMATION_MESSAGE);
+        } else if (resultado == JFileChooser.ERROR_OPTION) {
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al abrir el diálogo.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_CargarArchivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +195,11 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Label AntonyCen1;
+    private java.awt.Button CargarArchivo;
+    private java.awt.Label Integrantes;
+    private java.awt.Label SofiaRomero;
+    private java.awt.Label Titulo;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

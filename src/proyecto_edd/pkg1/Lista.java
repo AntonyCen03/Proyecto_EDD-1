@@ -6,15 +6,18 @@ package proyecto_edd.pkg1;
 
 /**
  *
- * @author Antony Cen
+ * @author Sofia Romero
  */
-public class Nodo {
-    public Nodo pNext;
-    public int dato;
-
-    public Nodo(int dato, Nodo pNext) {
-        this.pNext = pNext;
-        this.dato = dato;
+public class Lista {
+    public Nodo inicio;
+    
+    public Lista(){
+        inicio = null;
     }
+    
+    public void Insertar(int x){
+        inicio = new Nodo(x, inicio);
+    }
+    
     
 }
