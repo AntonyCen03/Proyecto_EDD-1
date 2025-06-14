@@ -5,13 +5,13 @@
 package proyecto_edd.pkg1;
 
 /**
- * Clase Lista  
+
  * @author Antony Cen y Sofia Romero
  * @version 23/05/25
  */
-public class Lista<T> {
-    public Nodo<T> pFirst;
-    public Nodo<T> pLast;
+public class Lista {
+    public Nodo pFirst;
+    public Nodo pLast;
     public int iN;
     
     /**
@@ -20,7 +20,7 @@ public class Lista<T> {
      * @param pLast
      * @param iN 
      */
-    public Lista(Nodo<T> pFirst, Nodo<T> pLast, int iN) {
+    public Lista(Nodo pFirst, Nodo pLast, int iN) {
         this.pFirst = null;
         this.pLast = null;
         this.iN = 0;
@@ -46,7 +46,7 @@ public class Lista<T> {
      * Metodo Primero
      * @return Esto retorna el primero de la lista
      */
-    public Nodo <T> Primero(){
+    public Nodo  Primero(){
         return this.pFirst;
     }
     
@@ -54,7 +54,7 @@ public class Lista<T> {
      * Metodo Ultimo
      * @return Esto retorna el Ultimo de la lista 
      */
-    public Nodo<T> Ultimo(){
+    public Nodo Ultimo(){
         return this.pLast;
     }
     
@@ -63,7 +63,7 @@ public class Lista<T> {
      * @param pValor
      * @return retorna los que leer a pValor
      */
-    public T Leer(Nodo<T> pValor){
+    public Object Leer(Nodo pValor){
         return pValor.dato;
     }
     
@@ -72,7 +72,7 @@ public class Lista<T> {
      * @param pValor
      * @return Esto retorna el pNext al pValor
      */
-    public Nodo<T> Proximo(Nodo pValor){
+    public Nodo Proximo(Nodo pValor){
         if (pValor!=this.Ultimo()) {
             return pValor.pNext;
         }else{
@@ -81,26 +81,14 @@ public class Lista<T> {
     }
     
     /**
-     * Metodo Anterior
-     * @param pValor
-     * @return Esto retorna el pPrev al pValor
-     */
-    public Nodo Anterior(Nodo pValor){
-        if (pValor.pPrev!=this.Ultimo()) {
-            pValor=pValor.pPrev;   
-        }
-        return pValor;
-    }
-    
-    /**
      * Metodo Final
      * @return retornar el final de la lista 
      */
-    public Nodo<T> Final(){
+    public Nodo Final(){
         if (this.EsVacia()) {
             return null;
         }else{
-            Nodo<T> pAux=this.Primero();
+            Nodo pAux=this.Primero();
             while (pAux.pNext!=this.Ultimo()){
                 pAux=this.Proximo(pAux);
             }
@@ -113,7 +101,7 @@ public class Lista<T> {
      * @return Retorna el valor que busca
      */
     public String Recoorer(){
-        Nodo<T> pAux;
+        Nodo pAux;
         String resultado="";
         if (this.EsVacia()) {
             return "La lista esta vacia";
@@ -133,8 +121,8 @@ public class Lista<T> {
      * @param x
      * @param pValor 
      */
-    public void Insertar (T x, Nodo<T> pValor){
-        Nodo <T> pNew = new Nodo <>(x);
+    public void Insertar2 (String x, Nodo pValor){
+        Nodo  pNew = new Nodo (x , pValor);
         if (this.EsVacia()) {
             this.pFirst=pNew;
             this.iN++; 
@@ -154,8 +142,8 @@ public class Lista<T> {
      * Esto sirve para eliminar pValor de lista
      * @param pValor 
      */
-    public void Eliminar(Nodo<T> pValor) {
-        Nodo<T> p=null;
+    public void Eliminar(Nodo pValor) {
+        Nodo p=null;
         if (pValor==pFirst) {
             pValor=pFirst;
             pFirst=pValor.pNext;
@@ -170,5 +158,10 @@ public class Lista<T> {
         pValor=null;
         iN--;
     }
+    
+    public void Insertar(String x){
+        pFirst = new Nodo(x, pFirst);
+    }
+
     
 }

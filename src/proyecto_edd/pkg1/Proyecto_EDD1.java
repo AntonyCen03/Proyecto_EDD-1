@@ -16,10 +16,15 @@ public class Proyecto_EDD1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Interfaz ventana=new Interfaz();
-        ventana.show(true);
-        ventana.setLocationRelativeTo(null);
+        Grafo jj = new Grafo();
         
+        jj.insertarArista();
+        
+        Interfaz ventana1 = new Interfaz();
+        ventana1.setVisible(true);
+        
+        System.out.println("Hola como esta");
+
         
     }
     

@@ -9,18 +9,12 @@ package proyecto_edd.pkg1;
  * @author Antony Cen y Sofia Romero
  * @version 23/05/25
  */
-public class Nodo <T> {
-    public Nodo <T> pNext;
-    public Nodo <T> pPrev;
-    public T dato;
-    
-    /**}
-     * Apuntador y datos
-     * @param dato 
-     */
-    public Nodo(T dato) {
-        this.pNext = null;
-        this.pPrev = null;
+public class Nodo {
+    public Nodo pNext;
+    public String dato;
+
+    public Nodo(String dato, Nodo pNext) {
+        this.pNext = pNext;
         this.dato = dato;
     }
     
