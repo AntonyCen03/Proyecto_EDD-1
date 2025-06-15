@@ -5,30 +5,49 @@
 package proyecto_edd.pkg1;
 
 /**
- *
- * @author anton
+ * Clase Cola
+ * @author Antony Cen y Sofia Romero
+ * @version 14/06/2025
  */
 public class Cola {
     private NodoCola Head;
     private NodoCola Tail;
     private int Size;
-
+    
+/**
+ * Constructor Cola
+ * @author Antony Cen y Sofia Romero
+ */
     public Cola() {
         this.Head = null;
         this.Tail = null;
         this.Size = 0;
     }
-    
+
+ /**
+ * Metodo EsVacio
+ * @author Antony Cen y Sofia Romero
+ * @return Cola vacio
+ */
     public boolean EsVacio(){
         return getHead()==null;
     }
-    
+ 
+ /**
+ * Metodo Vaciar
+ * @author Antony Cen y Sofia Romero
+ */
     public void Vaciar(){
         this.setHead(null);
         this.setTail(null);
         this.setSize(0);
     }
-    
+
+ /**
+ * Metodo Desencolar
+ * @author Antony Cen y Sofia Romero
+ * 
+ */    
     public void Desencolar(){
         if (this.EsVacio()) {
             System.out.println("La cola esta vacia");
@@ -36,7 +55,42 @@ public class Cola {
             this.Vaciar();
         }else{
             setHead(getHead().getpNext());
+            Size--;
         }
+    }
+
+
+ /**
+ * Metodo Encolar
+ * @author Antony Cen y Sofia Romero
+ */    
+    public void Encolar(NodoCola nuevo){
+        if (this.EsVacio()) {
+            Head=Tail=nuevo;
+        }else{
+            Tail.setpNext(nuevo);
+            Tail=nuevo;
+        }
+        Size++;
+    }
+
+ /**
+ * Metodo Imprimir
+ * @author Antony Cen y Sofia Romero
+ * @return String
+ */    
+    public String print(){
+        if (!this.EsVacio()) {
+            String printCola="";
+            for (int i = 0; i < Size; i++) {
+                NodoCola actual=Head;
+                Desencolar();
+                printCola+=actual.getDato()+",";
+                Encolar(actual);
+            }
+            return printCola;
+        }
+        return null;
     }
 
     /**
