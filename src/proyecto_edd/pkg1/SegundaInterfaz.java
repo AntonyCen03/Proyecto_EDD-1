@@ -1,5 +1,7 @@
 package proyecto_edd.pkg1;
 
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -71,9 +73,9 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         label1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        label1.setForeground(new java.awt.Color(255, 255, 255));
-        label1.setText("Busca Palabras");
-        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 140, 40));
+        label1.setForeground(new java.awt.Color(102, 102, 102));
+        label1.setText("Buscar Palabras");
+        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 140, 40));
 
         palabraEspecifica.setLabel("Buscar palabra");
         palabraEspecifica.setName(""); // NOI18N
@@ -84,7 +86,11 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         });
         jPanel1.add(palabraEspecifica, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
 
-        buscaPalabraEspecifico.setText(" ");
+        buscaPalabraEspecifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaPalabraEspecificoActionPerformed(evt);
+            }
+        });
         jPanel1.add(buscaPalabraEspecifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 180, -1));
         jPanel1.add(DFSbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 200, 140));
         jPanel1.add(BFSbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 200, 140));
@@ -95,7 +101,12 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
-        // TODO add your handling code here:
+        for(int i = 0; i< listaPalabras.length; i++){
+            //System.out.println(listaPalabras[i]);
+            jj.buscarPalabraDFS(listaPalabras[i], listaLetras);
+            
+        }
+        
         
         
     }//GEN-LAST:event_DFSActionPerformed
@@ -103,13 +114,24 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     private void palabraEspecificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraEspecificaActionPerformed
         // TODO add your handling code here:
         
-        String palabra =buscaPalabraEspecifico.getText().toUpperCase();
-        jj.buscarPalabraDFS(palabra, listaLetras);
+        String palabra = (buscaPalabraEspecifico.getText()).toUpperCase();
+        boolean si = jj.buscarPalabraDFS(palabra, listaLetras);
+        if(si == true){
+         JOptionPane.showMessageDialog(this, "Palabra encontrada");
+        }else {
+         JOptionPane.showMessageDialog(this, "La palabra no se encuentra");
+        }
+        
+        
     }//GEN-LAST:event_palabraEspecificaActionPerformed
 
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BFSActionPerformed
+
+    private void buscaPalabraEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaPalabraEspecificoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscaPalabraEspecificoActionPerformed
 
     /**
      * @param args the command line arguments
