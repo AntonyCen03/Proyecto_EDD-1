@@ -18,7 +18,7 @@ public class Proyecto_EDD1 {
         
         Grafo jj = new Grafo();
         jj.insertarArista();
-        Interfaz ventana1 = new Interfaz();
+        Interfaz ventana1 = new Interfaz(jj);
         ventana1.setVisible(true);
      
         

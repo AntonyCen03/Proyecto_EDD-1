@@ -14,8 +14,16 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     /**
      * Creates new form SegundaInterfaz
      */
-    public SegundaInterfaz() {
+    public static String[] listaLetras ;
+    public static String[] listaPalabras ;
+    public static Grafo jj;
+    
+    
+    public SegundaInterfaz(String[] listaLetras, String[] listaPalabras, Grafo jj) {
         initComponents();
+        this.listaLetras= listaLetras;
+        this.listaPalabras = listaPalabras;
+        this.jj = jj;
     }
 
     /**
@@ -34,6 +42,8 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         palabraEspecifica = new java.awt.Button();
         buscaPalabraEspecifico = new javax.swing.JTextField();
+        DFSbusqueda = new java.awt.TextArea();
+        BFSbusqueda = new java.awt.TextArea();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -48,10 +58,15 @@ public class SegundaInterfaz extends javax.swing.JFrame {
                 DFSActionPerformed(evt);
             }
         });
-        jPanel1.add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
+        jPanel1.add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, -1));
 
         BFS.setLabel("Buscar por BFS");
-        jPanel1.add(BFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+        BFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BFSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -67,23 +82,34 @@ public class SegundaInterfaz extends javax.swing.JFrame {
                 palabraEspecificaActionPerformed(evt);
             }
         });
-        jPanel1.add(palabraEspecifica, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
+        jPanel1.add(palabraEspecifica, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
 
         buscaPalabraEspecifico.setText(" ");
-        jPanel1.add(buscaPalabraEspecifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 230, 180, -1));
+        jPanel1.add(buscaPalabraEspecifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 180, -1));
+        jPanel1.add(DFSbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 200, 140));
+        jPanel1.add(BFSbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 200, 140));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 470, 350));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_DFSActionPerformed
 
     private void palabraEspecificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraEspecificaActionPerformed
         // TODO add your handling code here:
+        
+        String palabra =buscaPalabraEspecifico.getText().toUpperCase();
+        jj.buscarPalabraDFS(palabra, listaLetras);
     }//GEN-LAST:event_palabraEspecificaActionPerformed
+
+    private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BFSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,14 +141,16 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SegundaInterfaz().setVisible(true);
+                new SegundaInterfaz(listaLetras, listaPalabras, jj).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button BFS;
+    private java.awt.TextArea BFSbusqueda;
     private java.awt.Button DFS;
+    private java.awt.TextArea DFSbusqueda;
     private javax.swing.JTextField buscaPalabraEspecifico;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;

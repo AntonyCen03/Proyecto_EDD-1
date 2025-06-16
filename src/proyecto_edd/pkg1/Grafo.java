@@ -63,8 +63,36 @@ public class Grafo {
         }
     }
     
+    public boolean buscarPalabraDFS(String palabra, String[] listaLetras){
+        for(int i=0; i<16; i++){
+            if(listaLetras[i].equals(palabra.charAt(0))){
+                boolean[] visitados = new boolean[16];
+                if(buscarDesde(i, palabra, 0, visitados, listaLetras)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     
-    
+    public boolean buscarDesde(int nodo, String palabra, int indice, boolean[] visitados, String[] listaLetras){
+        if(indice == palabra.length()){
+            return true;}
+       if(!listaLetras[nodo].equals(palabra.charAt(indice))){
+            return false;
+        }
+       
+       visitados[nodo]=true;
+       for(int i = 0; i<16; i++){
+           if(aristas[nodo][i] && !visitados[i]){
+               if(buscarDesde(i, palabra, indice+1, visitados, listaLetras)){
+               return true;}
+           }
+       }
+       visitados[nodo] = false;
+       return false;
+        
+    }    
 }
     
    
