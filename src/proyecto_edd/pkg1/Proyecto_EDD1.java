@@ -17,12 +17,16 @@ public class Proyecto_EDD1 {
         // TODO code application logic here
         
         Grafo jj = new Grafo();
-        
         jj.insertarArista();
-        
         Interfaz ventana1 = new Interfaz();
         ventana1.setVisible(true);
+     
         
+        
+//        boolean[] visitados = new boolean [16];
+//        System.out.println ("recorrido dfs recursivo desde el nodo 0");
+//        jj.DFS(0, visitados);
+//   
         System.out.println("Hola como esta");
         
     }

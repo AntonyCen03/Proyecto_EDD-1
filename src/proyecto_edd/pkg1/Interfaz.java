@@ -139,9 +139,18 @@ public class Interfaz extends javax.swing.JFrame {
                     System.out.println(letras);
                     String nuevaContent = content.substring(0, content.length() - 1);
                     System.out.println(nuevaContent);
+                    
+           
+                    
+                    String[] listaLetras = letras.split(",");
+                    
                     String[] listaPalabras = nuevaContent.split(",");
-                        
-                   
+                    
+                    System.out.println(listaLetras);
+                    System.out.println(listaPalabras);
+                    
+                    SegundaInterfaz interfaz2 = new SegundaInterfaz();
+                    interfaz2.setVisible(true);
                     
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this,

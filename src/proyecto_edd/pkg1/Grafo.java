@@ -23,8 +23,8 @@ public class Grafo {
             
                 int actual = fila*4 + cola;
                 // System.out.println(actual);
-                for(int x = -1; x< 1 ; x++){
-                    for(int y = -1; y< 1; y++){
+                for(int x = -1; x<= 1 ; x++){
+                    for(int y = -1; y<= 1; y++){
                     
                         if (x== 0 && y== 0) continue;
                         
@@ -49,8 +49,23 @@ public class Grafo {
            return false;
     
     }
-        
+    
+    public void Palabras(String[] palabras){
+        String[] tablero = null; // Tablero lineal 4*4
+        int intentos = 0;
+        int maxIntentos = 5000; // máximo de intentos para formar un tablero válido
+
+        while (intentos < maxIntentos) {
+            // Vaciar el tablero
+            for (int i = 0; i < 16; i++) {
+                tablero[i] = "*";
+            }
+        }
     }
+    
+    
+    
+}
     
    
 
