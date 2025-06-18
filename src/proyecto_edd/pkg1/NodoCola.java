@@ -10,11 +10,34 @@ package proyecto_edd.pkg1;
  */
 public class NodoCola {
     private Object dato;
+    private int nodo;
+    private int indice;
     private NodoCola pNext;
 
-    public NodoCola(Object dato) {
-        this.dato = dato;
+    public NodoCola(int nodo, int indice) {
+        this.nodo = nodo;
+        this.indice = indice;
         this.pNext = null;
+    }
+
+
+    public int getNodo() { return nodo; }
+    public int getIndice() { return indice; }
+    public NodoCola getpNext() { return pNext; }
+    public void setpNext(NodoCola pNext) { this.pNext = pNext; }
+
+    /**
+     * @param nodo the nodo to set
+     */
+    public void setNodo(int nodo) {
+        this.nodo = nodo;
+    }
+
+    /**
+     * @param indice the indice to set
+     */
+    public void setIndice(int indice) {
+        this.indice = indice;
     }
 
     /**
@@ -30,20 +53,5 @@ public class NodoCola {
     public void setDato(Object dato) {
         this.dato = dato;
     }
-
-    /**
-     * @return the pNext
-     */
-    public NodoCola getpNext() {
-        return pNext;
-    }
-
-    /**
-     * @param pNext the pNext to set
-     */
-    public void setpNext(NodoCola pNext) {
-        this.pNext = pNext;
-    }
-    
     
 }

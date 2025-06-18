@@ -40,48 +40,50 @@ public class Pila {
     }
     
     /**
-     * Metodo Apilar
+     * Método Apilar corregido
      */
-    public void Apilar(Object dato){
-        NodoPila nuevo=new NodoPila(dato);
+    public void Apilar(Object dato) {
+        NodoPila nuevo = new NodoPila(dato);
         if (EsVacio()) {
-            pIni=nuevo;
-        }else{
-            NodoPila aux=getpIni();
-            nuevo.setDato(aux);
-            pIni=nuevo;
+            pIni = nuevo;
+        } else {
+            nuevo.setpNext(pIni);  
+            pIni = nuevo;
         }
+        Size++;  
     }
     
-    /**
-     * Metodo Desapilar
+     /**
+     * Método Desapilar corregido
      */
-    public void Desapilar(){
-        if (! EsVacio()) {
-            pIni.getpNext();
+    public void Desapilar() {
+        if (!EsVacio()) {
+            pIni = pIni.getpNext(); 
             Size--;
         }
     }
     
     
     /**
-     * Metodo de Imprimir
-     * @return the Print
+     * Método Print corregido
      */
-    public String Print(){
-        String texto;
-        texto="";
-        if (! EsVacio()) {
-            NodoPila aux=pIni;
-            for (int i = 0; i < getSize(); i++) {
-                texto=aux.getDato()+",";
-                aux=aux.getpNext();
+    public String Print() {
+        StringBuilder texto = new StringBuilder();
+        if (!EsVacio()) {
+            NodoPila aux = pIni;
+            while (aux != null) {  // Mejor usar while que for con tamaño
+                texto.append(aux.getDato()).append(",");
+                aux = aux.getpNext();
             }
-        }else{
-            texto="La píla esta vacio";
+            // Eliminar la última coma si hay elementos
+            if (texto.length() > 0) {
+                texto.setLength(texto.length() - 1);
+            }
+        } else {
+            texto.append("La pila está vacía");
         }
-        return texto;
-    } 
+        return texto.toString();
+    }  
 
     /**
      * @return the pIni
