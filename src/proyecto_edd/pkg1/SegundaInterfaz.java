@@ -103,6 +103,10 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
         
         StringBuilder encuentro = new StringBuilder();
+        long inicio= System.nanoTime();
+        long tiempo= System.nanoTime()-inicio;
+        double tiempoMs= tiempo/ 1_000_000.0;
+        
         for(int i = 0; i< listaPalabras.length; i++){
             //System.out.println(listaPalabras[i]);
             boolean pp = jj.buscarPalabraDFS(listaPalabras[i], listaLetras);
@@ -117,7 +121,7 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         }
         
         if(encuentro.length()> 0){
-            DFSbusqueda.setText(encuentro.toString());
+            DFSbusqueda.setText(encuentro.toString()+String.format("\nTiempo recorrido: %.8f ms",tiempoMs));
         }else{
             DFSbusqueda.setText("Diccionario vacio");
         }
@@ -134,7 +138,6 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         
         long inicio= System.nanoTime();
         long tiempo= System.nanoTime()-inicio;
-        
         double tiempoMs= tiempo/ 1_000_000.0;
         
         if(si == true){
@@ -149,6 +152,9 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
         // TODO add your handling code here:
         StringBuilder encuentro = new StringBuilder();
+        long inicio= System.nanoTime();
+        long tiempo= System.nanoTime()-inicio;
+        double tiempoMs= tiempo/ 1_000_000.0;
         
         for(int i = 0; i< listaPalabras.length; i++){
             //System.out.println(listaPalabras[i]);
@@ -160,7 +166,7 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         }
         
         if(encuentro.length()> 0){
-            BFSbusqueda.setText(encuentro.toString());
+            BFSbusqueda.setText(encuentro.toString()+String.format("\nTiempo recorrido: %.8f ms", tiempoMs));
         }else{
             BFSbusqueda.setText("Diccionario vacio");
         }
