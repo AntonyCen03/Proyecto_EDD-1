@@ -18,11 +18,13 @@ import javax.swing.JOptionPane;
 
 public class Interfaz extends javax.swing.JFrame {
 
+    public static Grafo jj;
     /**
      * Creates new form Interfaz
      */
-    public Interfaz() {
+    public Interfaz(Grafo jj) {
         initComponents();
+        this.jj = jj;
     }
 
     /**
@@ -139,9 +141,19 @@ public class Interfaz extends javax.swing.JFrame {
                     System.out.println(letras);
                     String nuevaContent = content.substring(0, content.length() - 1);
                     System.out.println(nuevaContent);
+                    
+           
+                    
+                    String[] listaLetras = letras.split(",");
+                    
                     String[] listaPalabras = nuevaContent.split(",");
-                        
-                   
+                    
+                    System.out.println(listaLetras);
+                    System.out.println(listaPalabras);
+                    
+                    SegundaInterfaz interfaz2 = new SegundaInterfaz(listaLetras, listaPalabras, jj);
+                    interfaz2.setVisible(true);
+                    interfaz2.setLocationRelativeTo(null);
                     
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this,
@@ -193,7 +205,7 @@ public class Interfaz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz().setVisible(true);
+                new Interfaz(jj).setVisible(true);
             }
         });
     }

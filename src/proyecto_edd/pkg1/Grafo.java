@@ -23,8 +23,8 @@ public class Grafo {
             
                 int actual = fila*4 + cola;
                 // System.out.println(actual);
-                for(int x = -1; x< 1 ; x++){
-                    for(int y = -1; y< 1; y++){
+                for(int x = -1; x<= 1 ; x++){
+                    for(int y = -1; y<= 1; y++){
                     
                         if (x== 0 && y== 0) continue;
                         
@@ -49,8 +49,94 @@ public class Grafo {
            return false;
     
     }
+    
+    public void Palabras(String[] palabras){
+        String[] tablero = null; // Tablero lineal 4*4
+        int intentos = 0;
+        int maxIntentos = 5000; // máximo de intentos para formar un tablero válido
+
+        while (intentos < maxIntentos) {
+            // Vaciar el tablero
+            for (int i = 0; i < 16; i++) {
+                tablero[i] = "*";
+            }
+        }
+    }
+    
+    public boolean buscarPalabraDFS(String palabra, String[] listaLetras){
+        for(int i=0; i<16; i++){
+            if(listaLetras[i].charAt(0)==(palabra.charAt(0))){
+                boolean[] visitados = new boolean[16];
+                if(buscarDesde(i, palabra, 0, visitados, listaLetras)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    public boolean buscarDesde(int nodo, String palabra, int indice, boolean[] visitados, String[] listaLetras){
+        if(indice == palabra.length()){
+            return true;}
+       if(listaLetras[nodo].charAt(0) !=(palabra.charAt(indice))){
+            return false;
+        }
+       
+       visitados[nodo]=true;
+       for(int i = 0; i<16; i++){
+           if(aristas[nodo][i] && !visitados[i]){
+               if(buscarDesde(i, palabra, indice+1, visitados, listaLetras)){
+               return true;}
+           }
+       }
+       visitados[nodo] = false;
+       return false;
+        
+    }    
+    
+    public boolean buscarPalabraBFS(String palabra, String[] listaLetras){
+        if(palabra == null || palabra.isEmpty() || listaLetras == null || listaLetras.length != 16) {
+            return false;
+        }
+        Cola cola = new Cola();
+        
+        for(int i = 0; i <16; i++){
+            if(listaLetras[i]. charAt(0) == palabra.charAt(0)){
+                boolean[] visitados = new boolean[16];
+                visitados[i] = true;
+                cola.Encolar(new NodoCola(i, 1, visitados));
+            }
+        }
+        while(!cola.EsVacio()){
+            NodoCola actual =cola.getHead();
+            cola.Desencolar();
+            
+            if(actual.getIndice() == palabra.length()){
+                return true;
+            }
+            int nodoActual = actual.getNodo();
+            int siguienteIndice = actual.getIndice();
+            boolean[] visitadosActual = actual.getVisitados();
+            
+            for(int i=0; i< 16; i++){
+                if(aristas[nodoActual][i] && !visitadosActual[i]){
+                    if(listaLetras[i].charAt(0) == palabra.charAt(siguienteIndice)){
+                        boolean[] nuevoVisitado = visitadosActual.clone();
+                        nuevoVisitado[i] = true;
+                        cola.Encolar(new NodoCola(i, siguienteIndice +1 , nuevoVisitado));
+                    }
+                }
+            }
+        }
+        return false;
+    
+    }
         
     }
+    
+    
+    
+
     
    
 
