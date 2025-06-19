@@ -115,7 +115,7 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String palabra = (buscaPalabraEspecifico.getText()).toUpperCase();
-        boolean si = jj.buscarPalabraDFS(palabra, listaLetras);
+        boolean si = jj.buscarPalabraBFS(palabra, listaLetras);
         if(si == true){
          JOptionPane.showMessageDialog(this, "Palabra encontrada");
         }else {

@@ -64,7 +64,7 @@ public class Grafo {
     }
     
         /**
-     * Busca una palabra en el tablero usando DFS (Depth-First Search) con tu clase Pila
+     * Busca una palabra en el tablero usando DFS (Depth-First Search)
      * @param palabra La palabra a buscar
      * @param listaLetras El tablero de letras (4x4 linealizado)
      * @return true si la palabra existe, false en caso contrario
@@ -112,7 +112,7 @@ public class Grafo {
     }
     
         /**
-    * Busca una palabra en el tablero usando BFS (Breadth-First Search) con tu clase Cola.
+    * Busca una palabra en el tablero usando BFS (Breadth-First Search)
     * @param palabra La palabra a buscar.
     * @param listaLetras El tablero de letras (4x4 linealizado).
     * @return true si la palabra existe, false en caso contrario.
@@ -123,7 +123,7 @@ public class Grafo {
            return false;
        }
 
-       Cola cola = new Cola(); // Usamos tu Cola en lugar de Queue<>
+       Cola cola = new Cola(); 
        boolean[] visitados = new boolean[16];
 
        // Buscar la primera letra en el tablero
