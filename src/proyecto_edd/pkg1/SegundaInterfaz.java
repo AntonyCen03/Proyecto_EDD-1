@@ -101,10 +101,25 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
+        
+        StringBuilder encuentro = new StringBuilder();
         for(int i = 0; i< listaPalabras.length; i++){
             //System.out.println(listaPalabras[i]);
-            jj.buscarPalabraDFS(listaPalabras[i], listaLetras);
-            
+            boolean pp = jj.buscarPalabraDFS(listaPalabras[i], listaLetras);
+//            if(pp == true){
+//                DFSbusqueda.setText(listaPalabras[i]);
+//            }else{
+//                DFSbusqueda.setText("Diccionario vacio");
+//            }
+            if(pp){
+                encuentro.append(listaPalabras[i]).append("\n");
+            }
+        }
+        
+        if(encuentro.length()> 0){
+            DFSbusqueda.setText(encuentro.toString());
+        }else{
+            DFSbusqueda.setText("Diccionario vacio");
         }
         
         
@@ -115,11 +130,11 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String palabra = (buscaPalabraEspecifico.getText()).toUpperCase();
-        boolean si = jj.buscarPalabraDFS(palabra, listaLetras);
+        boolean si = jj.buscarPalabraBFS(palabra, listaLetras);
         if(si == true){
-         JOptionPane.showMessageDialog(this, "Palabra encontrada");
+         JOptionPane.showMessageDialog(this, "Palabra "+ palabra + " encontrada");
         }else {
-         JOptionPane.showMessageDialog(this, "La palabra no se encuentra");
+         JOptionPane.showMessageDialog(this, "La palabra "+ palabra + " no se encuentra");
         }
         
         
@@ -127,6 +142,22 @@ public class SegundaInterfaz extends javax.swing.JFrame {
 
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
         // TODO add your handling code here:
+        StringBuilder encuentro = new StringBuilder();
+        
+        for(int i = 0; i< listaPalabras.length; i++){
+            //System.out.println(listaPalabras[i]);
+            boolean kk = jj.buscarPalabraBFS(listaPalabras[i], listaLetras);  
+        
+            if(kk){
+                encuentro.append(listaPalabras[i]).append("\n");
+            }
+        }
+        
+        if(encuentro.length()> 0){
+            BFSbusqueda.setText(encuentro.toString());
+        }else{
+            BFSbusqueda.setText("Diccionario vacio");
+        }
     }//GEN-LAST:event_BFSActionPerformed
 
     private void buscaPalabraEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaPalabraEspecificoActionPerformed

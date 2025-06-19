@@ -20,9 +20,8 @@ public class Proyecto_EDD1 {
         jj.insertarArista();
         Interfaz ventana1 = new Interfaz(jj);
         ventana1.setVisible(true);
-
         ventana1.setLocationRelativeTo(null);
-    
+
         
 //        boolean[] visitados = new boolean [16];
 //        System.out.println ("recorrido dfs recursivo desde el nodo 0");

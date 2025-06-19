@@ -82,11 +82,11 @@ public class Cola {
     public String print(){
         if (!this.EsVacio()) {
             String printCola="";
-            for (int i = 0; i < Size; i++) {
-                NodoCola actual=Head;
-                Desencolar();
-                printCola+=actual.getDato()+",";
-                Encolar(actual);
+            NodoCola actual=Head;
+            while(actual != null){
+                
+                printCola += actual.getDato()+",";
+                actual = actual.getpNext();
             }
             return printCola;
         }
@@ -139,3 +139,6 @@ public class Cola {
 
     
 }
+
+
+

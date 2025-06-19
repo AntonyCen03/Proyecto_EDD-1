@@ -117,48 +117,43 @@ public class Grafo {
     * @param listaLetras El tablero de letras (4x4 linealizado).
     * @return true si la palabra existe, false en caso contrario.
     */
-   public boolean buscarPalabraBFS(String palabra, String[] listaLetras) {
-       // Verificar entrada
-       if (palabra == null || palabra.isEmpty() || listaLetras == null || listaLetras.length != 16) {
-           return false;
-       }
-
-       Cola cola = new Cola(); // Usamos tu Cola en lugar de Queue<>
-       boolean[] visitados = new boolean[16];
-
-       // Buscar la primera letra en el tablero
-       for (int i = 0; i < 16; i++) {
-           if (listaLetras[i].charAt(0) == palabra.charAt(0)) {
-               cola.Encolar(new NodoCola(i, 0)); // NodoCola(nodo, indice)
-               visitados[i] = true;
-           }
-       }
-
-       while (!cola.EsVacio()) {
-           NodoCola actual = cola.getHead(); // Obtenemos el nodo actual
-           cola.Desencolar(); // Lo sacamos de la cola
-
-           // Si encontramos la palabra completa
-           if (actual.getIndice() == palabra.length()) {
-               return true;
-           }
-
-           // Si la letra actual no coincide, saltamos
-           if (listaLetras[actual.getNodo()].charAt(0) != palabra.charAt(actual.getIndice())) {
-               continue;
-           }
-
-           // Explorar nodos adyacentes
-           for (int i = 0; i < 16; i++) {
-               if (aristas[actual.getNodo()][i] && !visitados[i]) {
-                   visitados[i] = true;
-                   cola.Encolar(new NodoCola(i, actual.getIndice() + 1));
-               }
-           }
-       }
-
-       return false; // Si no se encontró la palabra
-   }
+       public boolean buscarPalabraBFS(String palabra, String[] listaLetras){
+        if(palabra == null || palabra.isEmpty() || listaLetras == null || listaLetras.length != 16) {
+            return false;
+        }
+        Cola cola = new Cola();
+        
+        for(int i = 0; i <16; i++){
+            if(listaLetras[i]. charAt(0) == palabra.charAt(0)){
+                boolean[] visitados = new boolean[16];
+                visitados[i] = true;
+                cola.Encolar(new NodoCola(i, 1, visitados));
+            }
+        }
+        while(!cola.EsVacio()){
+            NodoCola actual =cola.getHead();
+            cola.Desencolar();
+            
+            if(actual.getIndice() == palabra.length()){
+                return true;
+            }
+            int nodoActual = actual.getNodo();
+            int siguienteIndice = actual.getIndice();
+            boolean[] visitadosActual = actual.getVisitados();
+            
+            for(int i=0; i< 16; i++){
+                if(aristas[nodoActual][i] && !visitadosActual[i]){
+                    if(listaLetras[i].charAt(0) == palabra.charAt(siguienteIndice)){
+                        boolean[] nuevoVisitado = visitadosActual.clone();
+                        nuevoVisitado[i] = true;
+                        cola.Encolar(new NodoCola(i, siguienteIndice +1 , nuevoVisitado));
+                    }
+                }
+            }
+        }
+        return false;
+    
+    }
     
     
     public boolean buscarDesde(int nodo, String palabra, int indice, boolean[] visitados, String[] listaLetras){
@@ -178,12 +173,17 @@ public class Grafo {
        visitados[nodo] = false;
        return false;
         
-    }
-    
-    
+
+    }    
     
 
-}
+
+ }
     
+    
+   
+
+
+
    
 
