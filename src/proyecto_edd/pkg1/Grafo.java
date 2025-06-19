@@ -98,7 +98,6 @@ public class Grafo {
         if(palabra == null || palabra.isEmpty() || listaLetras == null || listaLetras.length != 16) {
             return false;
         }
-        
         Cola cola = new Cola();
         
         for(int i = 0; i <16; i++){
@@ -106,10 +105,8 @@ public class Grafo {
                 boolean[] visitados = new boolean[16];
                 visitados[i] = true;
                 cola.Encolar(new NodoCola(i, 1, visitados));
-                
             }
         }
-        
         while(!cola.EsVacio()){
             NodoCola actual =cola.getHead();
             cola.Desencolar();
@@ -117,7 +114,6 @@ public class Grafo {
             if(actual.getIndice() == palabra.length()){
                 return true;
             }
-            
             int nodoActual = actual.getNodo();
             int siguienteIndice = actual.getIndice();
             boolean[] visitadosActual = actual.getVisitados();
