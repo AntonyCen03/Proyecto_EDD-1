@@ -131,10 +131,16 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         
         String palabra = (buscaPalabraEspecifico.getText()).toUpperCase();
         boolean si = jj.buscarPalabraBFS(palabra, listaLetras);
+        
+        long inicio= System.nanoTime();
+        long tiempo= System.nanoTime()-inicio;
+        
+        double tiempoMs= tiempo/ 1_000_000.0;
+        
         if(si == true){
-         JOptionPane.showMessageDialog(this, "Palabra "+ palabra + " encontrada");
+         JOptionPane.showMessageDialog(this, String.format("Palabra \"%s\" encontrada%nTiempo de búsqueda: %.8f ms" ,palabra, tiempoMs));
         }else {
-         JOptionPane.showMessageDialog(this, "La palabra "+ palabra + " no se encuentra");
+         JOptionPane.showMessageDialog(this, "La palabra "+ palabra + " no se encuentrada");
         }
         
         

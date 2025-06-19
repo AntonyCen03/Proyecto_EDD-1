@@ -9,18 +9,27 @@ package proyecto_edd.pkg1;
  * @author anton
  */
 public class ResultadoBusqueda {
-    public String palabra;
-    public boolean encontrada;
-    public long tiempoMs;
-
-    public ResultadoBusqueda(String palabra, boolean encontrada, long tiempoMs) {
+    private String palabra;
+    private boolean encontrada;
+    private long tiempo;
+    
+    public ResultadoBusqueda(String palabra, boolean encontrada, long tiempo) {
         this.palabra = palabra;
         this.encontrada = encontrada;
-        this.tiempoMs = tiempoMs;
+        this.tiempo = tiempo;
     }
+    
+    // Getters
+    public String getPalabra() { return palabra; }
+    public boolean isEncontrada() { return encontrada; }
+    public long getTiempo() { return tiempo; }
     
     @Override
     public String toString() {
-        return String.format("%-10s - %-5s - %3d ms", palabra, encontrada, tiempoMs);
+        return String.format("%s - %s - %d ms", 
+                           palabra, 
+                           encontrada ? "Encontrada" : "No encontrada", 
+                           tiempo);
     }
 }
+

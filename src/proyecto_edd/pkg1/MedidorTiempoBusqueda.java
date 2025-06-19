@@ -4,6 +4,8 @@
  */
 package proyecto_edd.pkg1;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author anton
@@ -16,50 +18,34 @@ public class MedidorTiempoBusqueda {
     }
     
     /**
-     * Mide el tiempo de búsqueda para un conjunto de palabras
-     * @param palabras Arreglo de palabras a buscar
+     * Mide el tiempo de búsqueda para una palabra específica
+     * @param palabra Palabra a buscar
      * @param tablero Tablero de letras
-     * @return Lista con los resultados
+     * @return Resultado con el tiempo de búsqueda
      */
-    public Lista medirBusqueda(String[] palabras, String[] tablero) {
-        Lista resultados = new Lista(null, null, 0);
-        long inicioTotal = System.currentTimeMillis();
+    public ResultadoBusqueda medirBusquedaIndividual(String palabra, String[] tablero, String metodo) {
+        long inicio = System.currentTimeMillis();
+        boolean encontrada;
         
-        for (String palabra : palabras) {
-            long inicio = System.currentTimeMillis();
-            boolean encontrada = grafo.buscarPalabraDFS(palabra, tablero);
-            long tiempo = System.currentTimeMillis() - inicio;
-            
-            ResultadoBusqueda res = new ResultadoBusqueda(palabra, encontrada, tiempo);
-            resultados.Insertar(res.toString());
+        if(metodo.equals("DFS")) {
+            encontrada = grafo.buscarPalabraDFS(palabra, tablero);
+        } else {
+            encontrada = grafo.buscarPalabraBFS(palabra, tablero);
         }
         
-        long tiempoTotal = System.currentTimeMillis() - inicioTotal;
-        String resumen = crearResumen(palabras.length, tiempoTotal);
-        resultados.Insertar(resumen);
-        
-        return resultados;
-    }
-    
-    private String crearResumen(int totalPalabras, long tiempoTotal) {
-        double promedio = (double) tiempoTotal / totalPalabras;
-        return String.format("\nRESUMEN: %d palabras - %d ms - Promedio: %.2f ms",
-                           totalPalabras, tiempoTotal, promedio);
+        long tiempo = System.currentTimeMillis() - inicio;
+        return new ResultadoBusqueda(palabra, encontrada, tiempo);
     }
     
     /**
-     * Muestra los resultados por consola
-     * @param resultados Lista con los resultados
+     * Muestra el resultado de búsqueda en un JOptionPane
+     * @param resultado El resultado a mostrar
      */
-    public void mostrarResultados(Lista resultados) {
-        System.out.println("Resultados de búsqueda:");
-        System.out.println("Palabra     - Encont. - Tiempo");
-        System.out.println("-------------------------------");
-        
-        Nodo actual = resultados.Primero();
-        while (actual != null) {
-            System.out.println(actual.dato);
-            actual = actual.pNext;
-        }
+    public void mostrarResultadoIndividual(ResultadoBusqueda resultado) {
+        String mensaje = String.format("Palabra: %s\nEncontrada: %s\nTiempo: %d ms",
+                                     resultado.getPalabra(),
+                                     resultado.isEncontrada() ? "Sí" : "No",
+                                     resultado.getTiempo());
+        JOptionPane.showMessageDialog(null, mensaje, "Resultado de búsqueda", JOptionPane.INFORMATION_MESSAGE);
     }
 }
