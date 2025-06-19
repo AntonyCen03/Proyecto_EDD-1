@@ -153,6 +153,7 @@ public class Interfaz extends javax.swing.JFrame {
                     
                     SegundaInterfaz interfaz2 = new SegundaInterfaz(listaLetras, listaPalabras, jj);
                     interfaz2.setVisible(true);
+                    interfaz2.setLocationRelativeTo(null);
                     
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this,

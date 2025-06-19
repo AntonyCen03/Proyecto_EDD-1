@@ -20,6 +20,7 @@ public class Proyecto_EDD1 {
         jj.insertarArista();
         Interfaz ventana1 = new Interfaz(jj);
         ventana1.setVisible(true);
+        ventana1.setLocationRelativeTo(null);
      
         
         

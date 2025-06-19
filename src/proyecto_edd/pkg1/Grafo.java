@@ -94,8 +94,53 @@ public class Grafo {
         
     }    
     
+    public boolean buscarPalabraBFS(String palabra, String[] listaLetras){
+        if(palabra == null || palabra.isEmpty() || listaLetras == null || listaLetras.length != 16) {
+            return false;
+        }
+        
+        Cola cola = new Cola();
+        
+        for(int i = 0; i <16; i++){
+            if(listaLetras[i]. charAt(0) == palabra.charAt(0)){
+                boolean[] visitados = new boolean[16];
+                visitados[i] = true;
+                cola.Encolar(new NodoCola(i, 1, visitados));
+                
+            }
+        }
+        
+        while(!cola.EsVacio()){
+            NodoCola actual =cola.getHead();
+            cola.Desencolar();
+            
+            if(actual.getIndice() == palabra.length()){
+                return true;
+            }
+            
+            int nodoActual = actual.getNodo();
+            int siguienteIndice = actual.getIndice();
+            boolean[] visitadosActual = actual.getVisitados();
+            
+            for(int i=0; i< 16; i++){
+                if(aristas[nodoActual][i] && !visitadosActual[i]){
+                    if(listaLetras[i].charAt(0) == palabra.charAt(siguienteIndice)){
+                        boolean[] nuevoVisitado = visitadosActual.clone();
+                        nuevoVisitado[i] = true;
+                        cola.Encolar(new NodoCola(i, siguienteIndice +1 , nuevoVisitado));
+                    }
+                }
+            }
+        }
+        return false;
     
-}
+    }
+        
+    }
+    
+    
+    
+
     
    
 
