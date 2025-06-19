@@ -132,20 +132,26 @@ public class SegundaInterfaz extends javax.swing.JFrame {
 
     private void palabraEspecificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraEspecificaActionPerformed
         // TODO add your handling code here:
+     String palabra = buscaPalabraEspecifico.getText().toUpperCase().trim();
+    
+    // 1. Verificar búsqueda
+    long inicio = System.nanoTime();
+    boolean encontrada = jj.buscarPalabraBFS(palabra, listaLetras);
+    long tiempo = System.nanoTime() - inicio;
+    
+    if (encontrada) {
+        String mensaje = String.format(
+            "Palabra \"%s\" encontrada\nTiempo: %.4f ms", 
+            palabra, 
+            tiempo / 1_000_000.0
+        );
+        JOptionPane.showMessageDialog(this, mensaje);
         
-        String palabra = (buscaPalabraEspecifico.getText()).toUpperCase();
-        boolean si = jj.buscarPalabraBFS(palabra, listaLetras);
-        
-        long inicio= System.nanoTime();
-        long tiempo= System.nanoTime()-inicio;
-        double tiempoMs= tiempo/ 1_000_000.0;
-        
-        if(si == true){
-         JOptionPane.showMessageDialog(this, String.format("Palabra \"%s\" encontrada%nTiempo de búsqueda: %.8f ms" ,palabra, tiempoMs));
-        }else {
-         JOptionPane.showMessageDialog(this, "La palabra "+ palabra + " no se encuentrada");
-        }
-        
+        // 2. Mostrar árbol BFS completo
+        VisualizadorArbolBFS.mostrarArbol(jj, listaLetras, palabra);
+    } else {
+        JOptionPane.showMessageDialog(this, "Palabra no encontrada: " + palabra);
+    }
         
     }//GEN-LAST:event_palabraEspecificaActionPerformed
 

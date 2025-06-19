@@ -176,7 +176,9 @@ public class Grafo {
         
 
     }    
-    
+    public boolean[][] getAristas() {
+        return this.aristas;
+    }
 
 
  }
