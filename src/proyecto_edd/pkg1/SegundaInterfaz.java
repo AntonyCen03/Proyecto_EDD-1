@@ -1,6 +1,13 @@
 package proyecto_edd.pkg1;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.JFileChooser;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,12 +26,16 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     public static String[] listaLetras ;
     public static String[] listaPalabras ;
     public static Grafo jj;
+    private String [] dicOriginal;
+    private String[] palabrasAgregadas = new String[0]; // Para palabras nuevas
+    private int contadorAgregadas = 0; // Contador de palabras agregadas
     
     
     public SegundaInterfaz(String[] listaLetras, String[] listaPalabras, Grafo jj) {
         initComponents();
         this.listaLetras= listaLetras;
         this.listaPalabras = listaPalabras;
+        this.dicOriginal=new String[listaPalabras.length];
         this.jj = jj;
     }
 
@@ -46,6 +57,7 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         buscaPalabraEspecifico = new javax.swing.JTextField();
         DFSbusqueda = new java.awt.TextArea();
         BFSbusqueda = new java.awt.TextArea();
+        diccionario = new java.awt.Button();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -94,6 +106,15 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         jPanel1.add(buscaPalabraEspecifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 180, -1));
         jPanel1.add(DFSbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 200, 140));
         jPanel1.add(BFSbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 200, 140));
+
+        diccionario.setLabel("Guardar  en Diccionario");
+        diccionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diccionarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(diccionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 140, -1));
+        diccionario.getAccessibleContext().setAccessibleName("Guardar palabra ");
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 360));
 
@@ -149,9 +170,23 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         
         // 2. Mostrar árbol BFS completo
         VisualizadorArbolBFS.mostrarArbol(jj, listaLetras, palabra);
+        
+        if (!contienePalabra(listaPalabras, palabra) && !contienePalabra(palabrasAgregadas, palabra) && palabra.length()>=3) {
+            // Agregar la palabra al array de palabras agregadas
+                palabrasAgregadas = redimensionarArray(palabrasAgregadas, contadorAgregadas + 1);
+                palabrasAgregadas[contadorAgregadas++] = palabra;
+                
+                // Actualizar listaPalabras con la nueva palabra
+                listaPalabras = redimensionarArray(listaPalabras, listaPalabras.length + 1);
+                listaPalabras[listaPalabras.length - 1] = palabra;
+            
+        }
+        
     } else {
         JOptionPane.showMessageDialog(this, "Palabra no encontrada: " + palabra);
     }
+    
+    
         
     }//GEN-LAST:event_palabraEspecificaActionPerformed
 
@@ -181,6 +216,49 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     private void buscaPalabraEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaPalabraEspecificoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscaPalabraEspecificoActionPerformed
+
+    private void diccionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diccionarioActionPerformed
+        // TODO add your handling code here:
+        
+        JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Guardar diccionario actualizado");
+    int eleccion = fileChooser.showSaveDialog(this);
+    
+    if (eleccion == JFileChooser.APPROVE_OPTION) {
+        File archivo = fileChooser.getSelectedFile();
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+            // Escribir sección dic
+            writer.write("dic");
+            writer.newLine();
+            
+            // Escribir solo listaPalabras (ya incluye las agregadas)
+            for (String palabra : listaPalabras) {
+                writer.write(palabra);
+                writer.newLine();
+            }
+            
+            writer.write("/dic");
+            writer.newLine();
+            
+            // Escribir sección tab con las letras originales
+            writer.write("tab");
+            writer.newLine();
+            writer.write(String.join(",", listaLetras));
+            writer.newLine();
+            writer.write("/tab");
+            
+            JOptionPane.showMessageDialog(this, 
+                "Diccionario guardado exitosamente\n" +
+                "Palabras nuevas agregadas: " + contadorAgregadas);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Error al guardar el diccionario: " + ex.getMessage(), 
+                "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    }//GEN-LAST:event_diccionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,6 +294,26 @@ public class SegundaInterfaz extends javax.swing.JFrame {
             }
         });
     }
+    
+    // Método auxiliar para verificar si un array contiene una palabra
+    public boolean contienePalabra(String[] array, String palabra) {
+        for (String p : array) {
+            if (p != null && p.equals(palabra)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    // Método auxiliar para redimensionar un array
+    private String[] redimensionarArray(String[] arrayOriginal, int nuevoTamano) {
+        String[] nuevoArray = new String[nuevoTamano];
+        int elementosACopiar = Math.min(arrayOriginal.length, nuevoTamano);
+        for (int i = 0; i < elementosACopiar; i++) {
+            nuevoArray[i] = arrayOriginal[i];
+        }
+        return nuevoArray;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button BFS;
@@ -223,6 +321,7 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     private java.awt.Button DFS;
     private java.awt.TextArea DFSbusqueda;
     private javax.swing.JTextField buscaPalabraEspecifico;
+    private java.awt.Button diccionario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private java.awt.Label label1;

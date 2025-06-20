@@ -1,0 +1,14 @@
+dic
+CHAO
+OTRA
+PATA
+ORO
+RATA
+ARO
+ORA
+PATO
+TRAO
+/dic
+tab
+C,H,A,O,X,A,T,M,P,R,R,A,A,O,R,O
+/tab
