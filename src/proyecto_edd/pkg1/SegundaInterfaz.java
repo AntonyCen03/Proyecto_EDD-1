@@ -1,6 +1,13 @@
 package proyecto_edd.pkg1;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.JFileChooser;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -46,6 +53,7 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         buscaPalabraEspecifico = new javax.swing.JTextField();
         DFSbusqueda = new java.awt.TextArea();
         BFSbusqueda = new java.awt.TextArea();
+        diccionario = new java.awt.Button();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -94,6 +102,15 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         jPanel1.add(buscaPalabraEspecifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 180, -1));
         jPanel1.add(DFSbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 200, 140));
         jPanel1.add(BFSbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 200, 140));
+
+        diccionario.setLabel("Guardar  en Diccionario");
+        diccionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diccionarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(diccionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 140, -1));
+        diccionario.getAccessibleContext().setAccessibleName("Guardar palabra ");
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 360));
 
@@ -164,6 +181,61 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscaPalabraEspecificoActionPerformed
 
+    private void diccionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diccionarioActionPerformed
+        // TODO add your handling code here:
+        
+        JFileChooser fileChooser = new JFileChooser();
+        int eleccion = fileChooser.showSaveDialog(this);
+        
+        if (eleccion == JFileChooser.APPROVE_OPTION){
+            
+            File documento = fileChooser.getSelectedFile();
+            
+            BufferedReader escribir = null;
+        
+            try { 
+                StringBuilder nuevaInfo = new StringBuilder();
+                escribir = new BufferedReader(new FileReader(documento));
+                
+                String linea;
+                boolean dic = false;
+                
+                while((linea = escribir.readLine()) != null){
+                    if(linea.equals("dic")){
+                        dic = true;
+                        nuevaInfo.append("dic\n");
+                        
+                        for(String palabra : listaPalabras){
+                            nuevaInfo.append(palabra.toUpperCase()).append("\n");
+                        }
+                    }else if (linea.equals("/dic")){
+                        dic = false;
+                        nuevaInfo.append("/dic\n");
+                    }else if(!dic){
+                        nuevaInfo.append(linea).append("\n");
+                    }
+                
+                
+                }
+                escribir.close();
+                
+                BufferedWriter fina = new BufferedWriter(new FileWriter(documento));
+                fina.write(nuevaInfo.toString());
+                fina.close();
+                
+                
+                JOptionPane.showMessageDialog(this, "Texto agregado");
+                
+               
+
+            }catch (IOException ex){
+                JOptionPane.showMessageDialog(this, "Ocurrio un error");
+                ex.printStackTrace();
+
+            }
+        }
+    }//GEN-LAST:event_diccionarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,6 +277,7 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     private java.awt.Button DFS;
     private java.awt.TextArea DFSbusqueda;
     private javax.swing.JTextField buscaPalabraEspecifico;
+    private java.awt.Button diccionario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private java.awt.Label label1;
