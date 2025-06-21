@@ -20,5 +20,8 @@ Este proyecto implementa un **juego de sopa de letras** utilizando algoritmos de
 - **`Cola.java` / `Pila.java`**: Estructuras de datos personalizadas.
 
 ## ▶️ Ejecución
-1. Compila y ejecuta `Proyecto_EDD1.java`.
-2. Carga un archivo `.txt` con el formato:
+🔗 **Repositorio**: [https://github.com/AntonyCen03/Proyecto_EDD-1.git](https://github.com/AntonyCen03/Proyecto_EDD-1.git)
+
+1. Clona el repositorio:
+   ```sh
+   git clone https://github.com/AntonyCen03/Proyecto_EDD-1.git
