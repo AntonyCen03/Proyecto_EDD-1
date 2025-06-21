@@ -1,13 +1,12 @@
-package proyecto_edd.pkg1;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package proyecto_edd.pkg1;
 
 /**
  *
- * @author Sofia Romero
+ * @author anton
  */
 public class SegundaInterfaz extends javax.swing.JFrame {
 
@@ -27,72 +26,21 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jPanel1 = new javax.swing.JPanel();
-        DFS = new java.awt.Button();
-        BFS = new java.awt.Button();
-        label1 = new java.awt.Label();
-        palabraEspecifica = new java.awt.Button();
-        buscaPalabraEspecifico = new javax.swing.JTextField();
-
-        jRadioButton1.setText("jRadioButton1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        DFS.setLabel("Buscar por DFS");
-        DFS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DFSActionPerformed(evt);
-            }
-        });
-        jPanel1.add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
-
-        BFS.setLabel("Buscar por BFS");
-        BFS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BFSActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
-
-        label1.setAlignment(java.awt.Label.CENTER);
-        label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        label1.setForeground(new java.awt.Color(255, 255, 255));
-        label1.setText("Busca Palabras");
-        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 140, 40));
-
-        palabraEspecifica.setLabel("Buscar palabra");
-        palabraEspecifica.setName(""); // NOI18N
-        palabraEspecifica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                palabraEspecificaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(palabraEspecifica, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
-
-        buscaPalabraEspecifico.setText(" ");
-        jPanel1.add(buscaPalabraEspecifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 230, 180, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 470, 350));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DFSActionPerformed
-
-    private void palabraEspecificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraEspecificaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_palabraEspecificaActionPerformed
-
-    private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BFSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,12 +78,5 @@ public class SegundaInterfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button BFS;
-    private java.awt.Button DFS;
-    private javax.swing.JTextField buscaPalabraEspecifico;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private java.awt.Label label1;
-    private java.awt.Button palabraEspecifica;
     // End of variables declaration//GEN-END:variables
 }
