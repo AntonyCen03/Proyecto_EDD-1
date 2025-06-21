@@ -5,11 +5,6 @@
 package proyecto_edd.pkg1;
 
 
-/**
- *
- * @author anton
- */
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,6 +17,11 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+/**
+ * Interfaz Principal
+ * @author Antony Cen y Sofia Romero
+ * @version 20/06/2025
+ */
 public class Interfaz extends javax.swing.JFrame {
 
     public static Grafo jj;

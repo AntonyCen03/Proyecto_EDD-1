@@ -5,7 +5,7 @@
 package proyecto_edd.pkg1;
 
 /**
-
+ * Clase Lista
  * @author Antony Cen y Sofia Romero
  * @version 23/05/25
  */

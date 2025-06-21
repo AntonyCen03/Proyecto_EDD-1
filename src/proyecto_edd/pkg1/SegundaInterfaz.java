@@ -15,8 +15,9 @@ import javax.swing.JFileChooser;
  */
 
 /**
- *
- * @author Sofia Romero
+ * SegundaInterfaz
+ * @author Sofia Romero y Antony Cen
+ * @version 20/06/2025
  */
 public class SegundaInterfaz extends javax.swing.JFrame {
 
@@ -295,7 +296,10 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         });
     }
     
-    // Método auxiliar para verificar si un array contiene una palabra
+    /**
+     * Método auxiliar para verificar si un array contiene una palabra
+     * @return boolean
+     */
     public boolean contienePalabra(String[] array, String palabra) {
         for (String p : array) {
             if (p != null && p.equals(palabra)) {
@@ -305,7 +309,10 @@ public class SegundaInterfaz extends javax.swing.JFrame {
         return false;
     }
     
-    // Método auxiliar para redimensionar un array
+    /**
+     * Método auxiliar para redimensionar un array
+     * @return nuevoArray
+     */
     private String[] redimensionarArray(String[] arrayOriginal, int nuevoTamano) {
         String[] nuevoArray = new String[nuevoTamano];
         int elementosACopiar = Math.min(arrayOriginal.length, nuevoTamano);

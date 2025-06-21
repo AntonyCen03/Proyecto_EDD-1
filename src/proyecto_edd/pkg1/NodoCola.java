@@ -5,8 +5,9 @@
 package proyecto_edd.pkg1;
 
 /**
- *
- * @author Sofia Romero
+ * Clase NodoCola
+ * @author Sofia Romero y Antony Cen
+ * @version 20/06/2025
  */
 public class NodoCola {
     private int nodo;

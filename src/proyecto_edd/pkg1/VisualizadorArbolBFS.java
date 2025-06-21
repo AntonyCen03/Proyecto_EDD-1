@@ -11,6 +11,11 @@ import org.graphstream.ui.view.View;
 import javax.swing.*;
 import org.graphstream.ui.view.Viewer;
 
+/**
+* Clase isualizadorArbolBFS
+* @author Antony Cen
+* @version 20/06/2025
+*/
 public class VisualizadorArbolBFS {
 
     public static void mostrarArbol(Grafo grafo, String[] listaLetras, String palabra) {

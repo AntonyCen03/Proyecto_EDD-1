@@ -5,8 +5,9 @@
 package proyecto_edd.pkg1;
 
 /**
- *
- * @author anton
+ * Clase NodoPilaDFS
+ * @author Antony Cen y Sofia Romero
+ * @version 20/06/2025
  */
 public class NodoPilaDFS {
     private int nodo;
