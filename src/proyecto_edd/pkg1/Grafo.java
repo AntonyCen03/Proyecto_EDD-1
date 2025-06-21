@@ -64,6 +64,19 @@ public class Grafo {
         }
     }
     
+    
+    public boolean buscarPalabraDFS_2(String palabra, String[] listaLetras){
+        for(int i=0; i<16; i++){
+            if(listaLetras[i].charAt(0)==(palabra.charAt(0))){
+                boolean[] visitados = new boolean[16];
+                if(buscarDesde(i, palabra, 0, visitados, listaLetras)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
         /**
      * Busca una palabra en el tablero usando DFS (Depth-First Search)
      * @param palabra La palabra a buscar

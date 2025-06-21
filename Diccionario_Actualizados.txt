@@ -4,7 +4,7 @@ OTRA
 PATA
 ORO
 RATA
-TARA
+ORA
 /dic
 tab
 C,H,A,O,X,A,T,M,P,R,R,A,A,O,R,O

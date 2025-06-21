@@ -12,7 +12,7 @@ import javax.swing.*;
 import org.graphstream.ui.view.Viewer;
 
 /**
-* Clase isualizadorArbolBFS
+* Clase VisualizadorArbolBFS
 * @author Antony Cen
 * @version 20/06/2025
 */
