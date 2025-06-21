@@ -65,7 +65,7 @@ public class Grafo {
     }
     
     
-    public boolean buscarPalabraDFS_2(String palabra, String[] listaLetras){
+    public boolean buscarPalabraDFS(String palabra, String[] listaLetras){
         for(int i=0; i<16; i++){
             if(listaLetras[i].charAt(0)==(palabra.charAt(0))){
                 boolean[] visitados = new boolean[16];
@@ -83,7 +83,7 @@ public class Grafo {
      * @param listaLetras El tablero de letras (4x4 linealizado)
      * @return true si la palabra existe, false en caso contrario
      */
-    public boolean buscarPalabraDFS(String palabra, String[] listaLetras) {
+    public boolean buscarPalabraDFS_2(String palabra, String[] listaLetras) {
         // Verificar entrada
         if (palabra == null || palabra.isEmpty() || listaLetras == null || listaLetras.length != 16) {
             return false;
